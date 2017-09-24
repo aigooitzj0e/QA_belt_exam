@@ -1,0 +1,32 @@
+<h1>Welcome {{ currentUser.name }}</h1>
+<button (click)="logoff()">LogOut</button>
+<button (click)="navCreate()">Ask A Question!</button>
+
+<router-outlet></router-outlet>
+<!-- Grab all Questions -->
+<br>
+<input type="text" name="search"
+  placeholder="Search a Question"
+	[(ngModel)]="searchTerm"
+	#search = "ngModel"
+	(keyup)="searchExams()"
+	>
+
+<table>
+  <thead>
+    <tr>
+      <td>Questions</td>
+      <td>Answers</td>
+      <td>Action</td>
+    </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let question of qList">
+
+    <td>{{ question.question }}</td>
+    <td>{{ question.answers }}</td>
+    <td><button (click)="onShow(question._id)">Show</button><button (click)="onAnswer(question._id)">Answer</button></td>
+
+  </tr>
+  </tbody>
+</table>

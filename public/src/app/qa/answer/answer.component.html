@@ -1,0 +1,42 @@
+<button (click)="home()">Home</button> | <a href="">Answer</a>
+
+<div *ngFor="let question of thisQuestion">
+  <h1>{{ question.question }}</h1>
+  <p>{{ question.description }}</p>
+</div>
+
+<div>
+  <table>
+    <form (submit)="onAnswer()">
+      <tr>
+        <td><textarea
+          type="text"
+          name="answer"
+          placeholder="Your Answer"
+          rows="8"
+          cols="50"
+          required
+          [(ngModel)]="newAnswer.answer"
+          #answer="ngModel"
+          ></textarea></td>
+      </tr>
+      <tr>
+        <td><textarea
+          type="text"
+          name="description"
+          rows="5"
+          cols="50"
+          placeholder="Description"
+          [(ngModel)]="newAnswer.description"
+          #description="ngModel"
+          ></textarea></td>
+      </tr>
+      <tr>
+        <input type="submit" value="Submit">
+      </tr>
+    </form>
+  </table>
+
+</div>
+
+{{ newAnswer | json }}

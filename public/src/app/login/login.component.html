@@ -1,0 +1,17 @@
+<h1>Q&A</h1>
+<table>
+  <form (submit)="onLogin()">
+    <tr>
+      <td>Name:</td>
+      <td><input
+        type="text"
+        name="name"
+        [(ngModel)]="user.name"
+        #name="ngModel"
+        ></td>
+      <td><input type="submit" value="Enter"></td>
+    </tr>
+  </form>
+</table>
+
+{{ user | json }}

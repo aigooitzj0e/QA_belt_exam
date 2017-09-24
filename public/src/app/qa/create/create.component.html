@@ -1,0 +1,34 @@
+<p><a href="/listing">Home</a></p>
+
+<h1>New Question</h1>
+<form #createForm="ngForm" (submit)=newQuestion()>
+  <table>
+    <tr>
+      <td><textarea
+        name="question"
+        rows="8"
+        cols="80"
+        minlength=10
+        placeholder="Ask a Question"
+        [(ngModel)]="newQ.question"
+        #question=ngModel
+        ></textarea></td>
+        <td *ngIf="newQ.question.length < 10 && !question.pristine"><p>Question must be atleast 10 characters!</p></td>
+    </tr>
+    <tr>
+      <td><textarea
+        name="question"
+        rows="8"
+        cols="80"
+        placeholder="Description"
+        [(ngModel)]="newQ.description"
+        #description="ngModel"
+        ></textarea></td>
+    </tr>
+    <tr>
+      <input type="submit" value="Create!" [disabled]="!createForm.valid">
+    </tr>
+  </table>
+</form>
+
+{{ newQ | json }}
